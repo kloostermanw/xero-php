@@ -187,6 +187,13 @@ abstract class Model implements ObjectInterface, \JsonSerializable, \ArrayAccess
     }
 
     /**
+     * @return string
+     */
+    public static function getSubResourceURI() {
+        return '';
+    }
+
+    /**
      * Load an assoc array into the instance of the object $property => $value
      * $replace_data - replace existing data.
      *
