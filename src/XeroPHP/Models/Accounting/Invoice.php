@@ -334,13 +334,13 @@ class Invoice extends Remote\Model
             'HasAttachments' => [false, self::PROPERTY_TYPE_BOOLEAN, null, false, false],
             'Payments' => [false, self::PROPERTY_TYPE_OBJECT, 'Accounting\\Payment', true, false],
             'Prepayments' => [false, self::PROPERTY_TYPE_OBJECT, 'Accounting\\Prepayment', true, false],
-            'Overpayments' => [false, self::PROPERTY_TYPE_OBJECT, 'Accounting\\Overpayment', true, false],
+            'Overpayments' => [false, self::PROPERTY_TYPE_OBJECT, 'Accounting\\Overpayment\\Allocation', true, false],
             'AmountDue' => [false, self::PROPERTY_TYPE_FLOAT, null, false, false],
             'AmountPaid' => [false, self::PROPERTY_TYPE_FLOAT, null, false, false],
             'FullyPaidOnDate' => [false, self::PROPERTY_TYPE_DATE, '\\DateTimeInterface', false, false],
             'AmountCredited' => [false, self::PROPERTY_TYPE_FLOAT, null, false, false],
             'UpdatedDateUTC' => [false, self::PROPERTY_TYPE_TIMESTAMP, '\\DateTimeInterface', false, false],
-            'CreditNotes' => [false, self::PROPERTY_TYPE_OBJECT, 'Accounting\\CreditNote', true, false],
+            'CreditNotes' => [false, self::PROPERTY_TYPE_OBJECT, 'Accounting\\CreditNote\\Allocation', true, false],
         ];
     }
 
@@ -791,7 +791,7 @@ class Invoice extends Remote\Model
     }
 
     /**
-     * @return Overpayment[]|Remote\Collection
+     * @return Overpayment\Allocation[]|Remote\Collection
      */
     public function getOverpayments()
     {
@@ -839,7 +839,7 @@ class Invoice extends Remote\Model
     }
 
     /**
-     * @return CreditNote[]|Remote\Collection
+     * @return CreditNote\Allocation[]|Remote\Collection
      */
     public function getCreditNotes()
     {
