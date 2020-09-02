@@ -33,6 +33,12 @@ class Allocation extends Remote\Model
      */
     public static function getResourceURI()
     {
+        return 'CreditNotes';
+    }
+
+
+    public static function getSubResourceURI()
+    {
         return 'Allocations';
     }
 
@@ -53,7 +59,7 @@ class Allocation extends Remote\Model
      */
     public static function getGUIDProperty()
     {
-        return '';
+        return 'CreditNoteID';
     }
 
     /**
@@ -72,6 +78,7 @@ class Allocation extends Remote\Model
     public static function getSupportedMethods()
     {
         return [
+            Remote\Request::METHOD_PUT
         ];
     }
 
@@ -91,6 +98,7 @@ class Allocation extends Remote\Model
             'Invoice' => [false, self::PROPERTY_TYPE_OBJECT, 'Accounting\\Invoice', false, false],
             'AppliedAmount' => [false, self::PROPERTY_TYPE_FLOAT, null, false, false],
             'Date' => [false, self::PROPERTY_TYPE_DATE, '\\DateTimeInterface', false, false],
+            'CreditNoteID' => [false, self::PROPERTY_TYPE_STRING, null, false, false]
         ];
     }
 
@@ -158,7 +166,25 @@ class Allocation extends Remote\Model
     {
         $this->propertyUpdated('Date', $value);
         $this->_data['Date'] = $value;
+        return $this;
+    }
 
+    /**
+     * @return string
+     */
+    public function getCreditNoteID()
+    {
+        return $this->_data['CreditNoteID'];
+    }
+
+    /**
+     * @param string $value
+     * @return Allocation
+     */
+    public function setCreditNoteID($value)
+    {
+        $this->propertyUpdated('CreditNoteID', $value);
+        $this->_data['CreditNoteID'] = $value;
         return $this;
     }
 }
