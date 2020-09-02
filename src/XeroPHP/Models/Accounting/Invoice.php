@@ -333,7 +333,7 @@ class Invoice extends Remote\Model
             'RepeatingInvoiceID' => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'HasAttachments' => [false, self::PROPERTY_TYPE_BOOLEAN, null, false, false],
             'Payments' => [false, self::PROPERTY_TYPE_OBJECT, 'Accounting\\Payment', true, false],
-            'Prepayments' => [false, self::PROPERTY_TYPE_OBJECT, 'Accounting\\Prepayment', true, false],
+            'Prepayments' => [false, self::PROPERTY_TYPE_OBJECT, 'Accounting\\Prepayment\\Allocation', true, false],
             'Overpayments' => [false, self::PROPERTY_TYPE_OBJECT, 'Accounting\\Overpayment\\Allocation', true, false],
             'AmountDue' => [false, self::PROPERTY_TYPE_FLOAT, null, false, false],
             'AmountPaid' => [false, self::PROPERTY_TYPE_FLOAT, null, false, false],
@@ -783,7 +783,7 @@ class Invoice extends Remote\Model
     }
 
     /**
-     * @return Prepayment[]|Remote\Collection
+     * @return Prepayment\Allocation[]|Remote\Collection
      */
     public function getPrepayments()
     {
