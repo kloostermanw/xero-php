@@ -290,6 +290,11 @@ class Application
         if ($object->hasGUID()) {
             $method = $object::supportsMethod(Request::METHOD_POST) ? Request::METHOD_POST : Request::METHOD_PUT;
             $uri = sprintf('%s/%s', $object::getResourceURI(), $object->getGUID());
+
+            $subUri = $object::getSubResourceURI();
+            if (!empty($subUri)) {
+                $uri = $uri . "/" . $subUri;
+            }
         } else {
             //In this case it's new
             $method = $object::supportsMethod(Request::METHOD_PUT) ? Request::METHOD_PUT : Request::METHOD_POST;
